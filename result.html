@@ -18,6 +18,14 @@
 <body>
   <img src="./img/index.png" referrerpolicy="same-origin" class="col-12" style="height: 30vh; object-fit: cover">
 
+  <script>
+    const params = new URLSearchParams(document.location.search);
+    const t1 = params.get("t1");
+    const t2 = params.get("t2");
+    console.info("t1 = ", t1);
+    console.info("t2 = ", t2);
+  </script>
+
   <article class="container col-lg-12 mx-auto">
     <div class="row">
       <p class="lead mb-6">

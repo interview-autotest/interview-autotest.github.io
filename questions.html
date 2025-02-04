@@ -15,87 +15,72 @@
 <body>
   <img src="img/index.png" referrerpolicy="same-origin" class="col-12" style="height: 30vh; object-fit: cover">
 
-  <article id="questions" class="container mt-3">
+  <form action="result.html" id="questions" class="container mt-3">
 
     <div id="q1" class="collapse show" data-bs-parent="#questions">
       <h2>Computer Science (1 из 8)</h2>
       <h3>Алгоритмы и структуры данных (1 из 5)</h3>
-
-      <form action="#">
-        <div class="form-check">
-          <input type="radio" class="form-check-input" id="radio0" name="t1" value="0">
-          <label class="form-check-label" for="radio0">0 — Не знаю</label>
-        </div>
-        <br />
-        <div class="form-check">
-          <input type="radio" class="form-check-input" id="radio1" name="t1" value="1">
-          <label class="form-check-label" for="radio1">1 — Знание терминологии и/или принципов оценки сложности
-            алгоритмов. Знание простейших алгоритмов
-            сортировки и поиска (пузырек, бинарный поиск). Знание основных структур данных (массив, односвязный,
-            двухсвязный списки, стэк, куча)</label>
-        </div>
-        <br />
-        <div class="form-check">
-          <input type="radio" class="form-check-input" id="radio2" name="t1" value="2">
-          <label class="form-check-label" for="radio2">2 — Понимание и умение применять продвинутые алгоритмы сортировки
-            (пирамидальная сортировка, быстрая
-            сортировка) и поиска. Простейший алгоритм поиска подстрок. хеш-функции, идеальное хеширование. Пониманием
-            временных затрат на базовые оперции с основными структурами данных. Знание hashtables, бинарных деревьев,
-            красно-черных деревьев</label>
-        </div>
-        <br />
-        <div class="form-check">
-          <input type="radio" class="form-check-input" id="radio3" name="t1" value="3">
-          <label class="form-check-label" for="radio3">3 — Многопоточная сортировка слиянием, порязрядная и карманная
-            сортировка, алгоритмы для работы с
-            графами (алгоритм Беллмана-Форда, алгоритм Дейкстры). Понимание узких мест существующих алгоритмов и
-            умение выработать варианты оптимизаций. Понимание приближенных алгоритмов (задача о коммивояжере, о
-            вершинном покрытии)</label>
-        </div>
-        <button type="submit" class="btn btn-primary mt-3" disabled>
-          <a class="btn" href="#">Назад</a></button>
-        <button type="submit" class="btn btn-primary mt-3">
-          <a class="btn" data-bs-toggle="collapse" href="#q2">Далее</a></button>
-      </form>
+      <div class="form-check">
+        <input type="radio" class="form-check-input" id="radio10" name="t1" value="0">
+        <label class="form-check-label" for="radio10">0 — Не знаю</label>
+      </div>
+      <br />
+      <div class="form-check">
+        <input type="radio" class="form-check-input" id="radio11" name="t1" value="1">
+        <label class="form-check-label" for="radio11">1 — Знание терминологии и/или принципов оценки сложности
+          алгоритмов. Знание простейших алгоритмов
+          сортировки и поиска (пузырек, бинарный поиск). Знание основных структур данных (массив, односвязный,
+          двухсвязный списки, стэк, куча)</label>
+      </div>
+      <br />
+      <div class="form-check">
+        <input type="radio" class="form-check-input" id="radio12" name="t1" value="2">
+        <label class="form-check-label" for="radio12">2 — Понимание и умение применять продвинутые алгоритмы сортировки
+          (пирамидальная сортировка, быстрая сортировка) и поиска. Простейший алгоритм поиска подстрок. хеш-функции,
+          идеальное хеширование. Пониманием
+          временных затрат на базовые оперции с основными структурами данных. Знание hashtables, бинарных деревьев,
+          красно-черных деревьев</label>
+      </div>
+      <br />
+      <div class="form-check">
+        <input type="radio" class="form-check-input" id="radio13" name="t1" value="3">
+        <label class="form-check-label" for="radio13">3 — Многопоточная сортировка слиянием, порязрядная и карманная
+          сортировка, алгоритмы для работы с
+          графами (алгоритм Беллмана-Форда, алгоритм Дейкстры). Понимание узких мест существующих алгоритмов и
+          умение выработать варианты оптимизаций. Понимание приближенных алгоритмов (задача о коммивояжере, о
+          вершинном покрытии)</label>
+      </div>
+      <button type="submit" class="btn btn-primary mt-3" disabled>
+        <a class="btn" href="#">Назад</a></button>
+      <button type="submit" class="btn btn-primary mt-3">
+        <a class="btn" data-bs-toggle="collapse" href="#q2">Далее</a></button>
     </div>
 
     <div id="q2" class="collapse hide" data-bs-parent="#questions">
       <h2>Computer Science (1 из 8)</h2>
       <h3>ООП (2 из 5)</h3>
-
-      <form action="../result.html">
-        <div class="form-check">
-          <input type="radio" class="form-check-input" id="radio0" name="t2" value="0">
-          <label class="form-check-label" for="radio0">0 — Не знаю</label>
-        </div>
-        <br />
-        <div class="form-check">
-          <input type="radio" class="form-check-input" id="radio1" name="t2" value="1">
-          <label class="form-check-label" for="radio1">1 — Понимание основных принципов ООП (Инкапсуляция,
-            Наследование, Полиморфизм, Абстракция данных). Понимание различий объекта и класса.</label>
-        </div>
-        <br />
-        <div class="form-check">
-          <input type="radio" class="form-check-input" id="radio2" name="t2" value="2">
-          <label class="form-check-label" for="radio2">2 — Как сочетаются принципы ООП и protocol oriented подходы
-            разработки. Как они себя проявляют при сочетании подходов. Объяснить в чем проявляются принципы на
-            практике, разбить на практике по структурам объектов/классов/типов и объяснить в чем они проявляются.
-            Знание аббревиатуры SOLID, GRASP.</label>
-        </div>
-        <button type="submit" class="btn btn-primary mt-3">
-          <a class="btn" data-bs-toggle="collapse" href="#q1">Назад</a></button>
-        <button type="submit" class="btn btn-primary mt-3">
-          <a class="btn" data-bs-toggle="collapse" href="#result">Далее</a></button>
-      </form>
-    </div>
-
-    <div id="result" class="collapse hide" data-bs-parent="#questions">
-      <p class="lead mb-6">
-        Поздравляю с прохождением теста
-      </p>
-      <form action="index.html">
-        <button type="submit" class="btn btn-primary mt-3">Пройти заново</button>
-      </form>
+      <div class="form-check">
+        <input type="radio" class="form-check-input" id="radio20" name="t2" value="0">
+        <label class="form-check-label" for="radio20">0 — Не знаю</label>
+      </div>
+      <br />
+      <div class="form-check">
+        <input type="radio" class="form-check-input" id="radio21" name="t2" value="1">
+        <label class="form-check-label" for="radio21">1 — Понимание основных принципов ООП (Инкапсуляция,
+          Наследование, Полиморфизм, Абстракция данных). Понимание различий объекта и класса.</label>
+      </div>
+      <br />
+      <div class="form-check">
+        <input type="radio" class="form-check-input" id="radio22" name="t2" value="2">
+        <label class="form-check-label" for="radio22">2 — Как сочетаются принципы ООП и protocol oriented подходы
+          разработки. Как они себя проявляют при сочетании подходов. Объяснить в чем проявляются принципы на
+          практике, разбить на практике по структурам объектов/классов/типов и объяснить в чем они проявляются.
+          Знание аббревиатуры SOLID, GRASP.</label>
+      </div>
+      <button type="submit" class="btn btn-primary mt-3">
+        <a class="btn" data-bs-toggle="collapse" href="#q1">Назад</a></button>
+      <button type="submit" class="btn btn-primary mt-3">
+        <a class="btn">Завершить</a></button>
     </div>
 
   </article>
