@@ -1,82 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<meta charset="UTF-8">
-<title>Матрица компетенций. Мобильная разработка iOS</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" 
-integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" 
-crossorigin="anonymous" rel="stylesheet" >
-<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Матрица компетенций. Мобильная разработка iOS</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous"
+    rel="stylesheet">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    body {
+      background-color: #8089F5;
+    }
+  </style>
+</head>
+
 <body>
-
-
-  <img src="./img/index.jpg" referrerpolicy="same-origin" class="col-12" style="height: 30vh; object-fit: cover">
-
-  <header class="container d-flex flex-wrap py-3 mb-4">
-    <nav aria-label="breadcrumb" class="me-md-auto">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item active fs-4" aria-current="page">Матрица компетенций</li>
-      </ol>
-    </nav>
-    <ul class="nav nav-pills">
-      <li class="nav-item">
-        <a href="#" class="nav-link">Computer Science</a>
-      </li>
-      <li class="nav-item">
-        <a href="#" class="nav-link">Objective-C</a>
-      </li>
-      <li class="nav-item">
-        <a href="#" class="nav-link">Swift</a>
-      </li>
-      <li class="nav-item">
-        <a href="#" class="nav-link">iOS SDK</a>
-      </li>
-      <li class="nav-item">
-        <a href="#" class="nav-link">Архитектура</a>
-      </li>
-      <li class="nav-item">
-        <a href="#" class="nav-link">Memory management</a>
-      </li>
-      <li class="nav-item">
-        <a href="#" class="nav-link">Build management</a>
-      </li>
-      <li class="nav-item">
-        <a href="#" class="nav-link">Soft Skills</a>
-      </li>
-    </ul>
-  </header>
+  <img src="img/index.png" referrerpolicy="same-origin" class="col-12" style="height: 30vh; object-fit: cover">
 
   <article class="container col-lg-12 mx-auto">
     <div class="row">
-        <p class="lead mb-6">
-        Выбери один наиболее подходящий вариант ответа в каждом вопросе.<br/>
-        При выборе учитывай, что должны быть выполнены и пункты с меньшим номером.<br/>
-        Например выбирая 4 - должны быть выполнены пункты 1, 2 и 3<br/>
-        Если знаний не хватает даже для пункта 1 - то выбирай 0<br/>
+      <p class="lead mb-6">
+        Выбери один наиболее подходящий вариант ответа в каждом вопросе.<br />
+        При выборе учитывай, что должны быть выполнены и пункты с меньшим номером.<br />
+        Например выбирая 4 - должны быть выполнены пункты 1, 2 и 3<br />
+        Если знаний не хватает даже для пункта 1 - то выбирай 0<br />
       </p>
-        <form id="feedback">
-          <div class="col-6">
-            <div class="input-group has-validation">
-              <span class="input-group-text">@</span>
-              <input type="text" class="form-control" name="name" placeholder="Ник на платформе" required="">
-              <div class="invalid-feedback">
-                Алгоритмы и структуры данных
-              </div>
-            </div>
-          </div>
-  
-          <div class="col-6">
-            <select class="form-select" name="tribe" required="">
-              <option value="">0 — Не знаю</option>
-              <option>1 — Знание терминологии и/или принципов оценки сложности алгоритмов. Знание простейших алгоритмов сортировки и поиска (пузырек, бинарный поиск). Знание основных структур данных (массив, односвязный, двухсвязный списки, стэк, куча)</option>
-              <option>2 — Понимание и умение применять продвинутые алгоритмы сортировки (пирамидальная сортировка, быстрая сортировка) и поиска. Простейший алгоритм поиска подстрок. хеш-функции, идеальное хеширование. Пониманием временных затрат на базовые оперции с основными структурами данных. Знание hashtables, бинарных деревьев, красно-черных деревьев.</option>
-              <option>3 — Многопоточная сортировка слиянием, порязрядная и карманная сортировка, алгоритмы для работы с графами (алгоритм Беллмана-Форда, алгоритм Дейкстры). Понимание узких мест существующих алгоритмов и умение выработать варианты оптимизаций. Понимание приближенных алгоритмов (задача о коммивояжере, о вершинном покрытии).</option>
-            </select>
-          </div>
-  
-          <button class="btn btn-primary col-6" type="submit">Далее</button>
-        </form>
+      <form action="questions.html">
+        <button type="submit" class="btn btn-primary mt-3">Начать</button>
+      </form>
+    </div>
     </div>
   </article>
 
 </body>
+
 </html>
