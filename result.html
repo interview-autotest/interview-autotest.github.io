@@ -18,25 +18,69 @@
 <body>
   <img src="./img/index.png" referrerpolicy="same-origin" class="col-12" style="height: 30vh; object-fit: cover">
 
-  <script>
-    const params = new URLSearchParams(document.location.search);
-    const t1 = params.get("t1");
-    const t2 = params.get("t2");
-    console.info("t1 = ", t1);
-    console.info("t2 = ", t2);
-  </script>
-
   <article class="container col-lg-12 mx-auto">
     <div class="row">
       <p class="lead mb-6">
-        Поздравляю с прохождением теста
+        Поздравляем с прохождением теста
       </p>
+      <p id="result"></p>
+
+      <div class="row">
+        <div class="col-1"></div>
+        <div class="col-1"></div>
+        <div class="col-1"></div>
+        <div class="col-1"></div>
+        <div class="col">1.Computer Science</div>
+      </div>
+
+      <div class="row">
+        <div id="r11" class="col-1">-</div>
+        <div id="r12" class="col-1">-</div>
+        <div id="r13" class="col-1">-</div>
+        <div id="r14" class="col-1">-</div>
+        <div class="col">1.1.Алгоритмы и структуры данных</div>
+      </div>
+
+      <div class="row">
+        <div id="r21" class="col-1">-</div>
+        <div id="r22" class="col-1">-</div>
+        <div id="r23" class="col-1">-</div>
+        <div id="r24" class="col-1">-</div>
+        <div class="col">1.2.ООП</div>
+      </div>
+
       <form action="index.html">
         <button type="submit" class="btn btn-primary mt-3">Пройти заново</button>
       </form>
     </div>
     </div>
   </article>
+
+  <script>
+    const params = new URLSearchParams(document.location.search);
+    const t1 = params.get("t1");
+    const t2 = params.get("t2");
+
+    document.getElementById("r11").className += (t1 == "1") ? " bg-danger" : " bg-danger bg-opacity-25"
+    document.getElementById("r12").className += (t1 == "2") ? " bg-warning" : " bg-warning bg-opacity-25"
+    document.getElementById("r13").className += (t1 == "2" || t1 == "3") ? " bg-success" : " bg-success bg-opacity-25"
+    document.getElementById("r14").className += (t1 == "2" || t1 == "3") ? " bg-primary" : " bg-primary bg-opacity-25"
+
+    document.getElementById("r21").className += (t2 == "1") ? " bg-danger" : " bg-danger bg-opacity-25"
+    document.getElementById("r22").className += (t2 == "2") ? " bg-warning" : " bg-warning bg-opacity-25"
+    document.getElementById("r23").className += (t2 == "2") ? " bg-success" : " bg-success bg-opacity-25"
+    document.getElementById("r24").className += (t2 == "2") ? " bg-primary" : " bg-primary bg-opacity-25"
+
+    document.getElementById("r11").innerHTML = (t1 == "1") ? "Junior" : ""
+    document.getElementById("r12").innerHTML = (t1 == "2") ? "Middle" : ""
+    document.getElementById("r13").innerHTML = (t1 == "2" || t1 == "3") ? "Senior" : ""
+    document.getElementById("r14").innerHTML = (t1 == "2" || t1 == "3") ? "Master" : ""
+
+    document.getElementById("r21").innerHTML = (t2 == "1") ? "Junior" : ""
+    document.getElementById("r22").innerHTML = (t2 == "2") ? "Middle" : ""
+    document.getElementById("r23").innerHTML = (t2 == "2") ? "Senior" : ""
+    document.getElementById("r24").innerHTML = (t2 == "2") ? "Master" : ""
+  </script>
 
 </body>
 
