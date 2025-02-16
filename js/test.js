@@ -11,8 +11,8 @@ function readFile(file) {
 function parseInput(input) {
     const lines = input.split('\n');
     const questions = []; // Массив для хранения разделов
-    let currentSection = null;
     let currentTopic = null;
+    let title = null;
 
     for (let line of lines) {
         line = line.trim();
@@ -20,25 +20,24 @@ function parseInput(input) {
             let firstSpaceIndex = line.indexOf(' ');
             if (firstSpaceIndex == 1) {
                 // Основной заголовок (раздел)
-                if (currentSection) {
-                    if (currentTopic) {
-                        currentSection.topics.push(currentTopic); // Добавляем последнюю тему в секции
-                    }
-                    questions.push(currentSection); // Добавляем предыдущий раздел в массив
+                if (title) {
+                    questions.push(currentTopic); // Добавляем предыдущий раздел в массив
                 }
-                currentSection = {
-                    title: line.substring(firstSpaceIndex).trim(),
-                    topics: [],
+                title = line.substring(firstSpaceIndex).trim()
+                currentTopic = {
+                    title: title,
+                    subtitle: "",
+                    questions: [],
                 };
-                currentTopic = null; // Обнуляем текущую тему
             } else {
                 // Подзаголовок (тема)
-                if (currentSection) {
-                    if (currentTopic) {
-                        currentSection.topics.push(currentTopic); // Добавляем предыдущую тему
+                if (title) {
+                    if (currentTopic.questions.length > 0) {
+                        questions.push(currentTopic); // Добавляем предыдущий раздел в массив
                     }
                     currentTopic = {
-                        subTitle: line.substring(firstSpaceIndex).trim(),
+                        title: title,
+                        subtitle: line.substring(firstSpaceIndex).trim(),
                         questions: [],
                     };
                 }
@@ -49,9 +48,10 @@ function parseInput(input) {
                 text: line.substring(line.indexOf('.') + 1).trim(),
                 value: line.substring(0, line.indexOf('.')).trim()
             });
-        } else if (currentSection) {
+        } else if (title) {
             currentTopic = {
-                subTitle: "",
+                title: title,
+                subtitle: "",
                 questions: [],
             };
             // Добавление вопроса
@@ -62,14 +62,9 @@ function parseInput(input) {
         }
     }
 
-    // Добавляем последние раздел и тему с вопросами
+    // Добавляем последний раздел и тему с вопросами
     if (currentTopic) {
-        if (currentSection) {
-            currentSection.topics.push(currentTopic); // Добавляем последнюю тему в раздел
-        }
-    }
-    if (currentSection) {
-        questions.push(currentSection); // Добавляем последний раздел в массив
+        questions.push(currentTopic); // Добавляем последний раздел в массив
     }
 
     return questions;
@@ -78,40 +73,52 @@ function parseInput(input) {
 function generateHTML(questions) {
     let html = '<form action="result.html" id="questions" class="container mt-3">';
 
-    questions.forEach((sectionStructure, sectionIndex) => {
-        const section = sectionIndex + 1
+    questions.forEach((topicStructure, topicIndex) => {
+        const topic = topicIndex + 1
+        if (topic == 1) {
+            html += `<div id="q${topic}" class="collapse show" data-bs-parent="#questions">\n`;
+        } else {
+            html += `<div id="q${topic}" class="collapse hide" data-bs-parent="#questions">\n`;
+        }
+        html += `<h2>${topicStructure.title}</h2>\n`;
+        if (topicStructure.subtitle) {
+            html += `<h3>${topicStructure.subtitle}</h3>\n`;
+        }
 
-        sectionStructure.topics.forEach((topicStructure, topicIndex) => {
-            const topic = topicIndex + 1
-            html += `<div id="q${section}${topic}" class="collapse show" data-bs-parent="#questions">\n`;
-            html += `<h2>${sectionStructure.title}</h2>\n`;
-            if (topicStructure.subTitle) {
-                html += `<h3>${topicStructure.subTitle}</h3>\n`;
-            }
-
-            // Добавление дефолтного ответа
+        // Добавление дефолтного ответа
+        html += `<div class="form-check">\n`;
+        html += `<input type="radio" class="form-check-input" id="radio${topic}0" name="t${topic}" value="0" checked="checked">\n`;
+        html += `<label class="form-check-label" for="radio${topic}0">0 — Не знаю</label>\n`;
+        html += `</div>\n`;
+        topicStructure.questions.forEach((questionStructure, questionIndex) => {
+            const text = questionStructure.text
+            const value = questionStructure.value
+            const question = questionIndex + 1
             html += `<div class="form-check">\n`;
-            html += `<input type="radio" class="form-check-input" id="radio${section}${topic}0" name="t${section}${topic}" value="0" checked="checked">\n`;
-            html += `<label class="form-check-label" for="radio${section}${topic}0">0 — Не знаю</label>\n`;
-            html += `</div>\n`;
-            topicStructure.questions.forEach((questionStructure, questionIndex) => {
-                const text = questionStructure.text
-                const value = questionStructure.value
-                const question = questionIndex + 1
-                html += `<div class="form-check">\n`;
-                html += `<input type="radio" class="form-check-input" id="radio${section}${topic}${question}" name="t${section}${topic}" value="${value}">\n`;
-                html += `<label class="form-check-label" for="radio${section}${topic}${question}">${value} — ${text}</label>\n`;
-                html += `</div>\n`;
-            });
+            html += `<input type="radio" class="form-check-input" id="radio${topic}${question}" name="t${topic}" value="${value}">\n`;
+            html += `<label class="form-check-label" for="radio${topic}${question}">${value} — ${text}</label>\n`;
             html += `</div>\n`;
         });
+
+        // Добавление кнопки назад
+        if (topic == 1) {
+            html += `<button type="submit" class="btn btn-primary mt-3" disabled>\n`;
+            html += `<a class="btn" href="#">Назад</a></button>\n`;
+        } else {
+            html += `<button type="submit" class="btn btn-primary mt-3">\n`;
+            html += `<a class="btn" data-bs-toggle="collapse" href="#q${topicIndex}">Назад</a></button>\n`;
+        }
+        // Добавление кнопки вперёд
+        html += `<button type="submit" class="btn btn-primary mt-3">\n`;
+        if (topic == questions.length) {
+            html += `<a class="btn">Завершить</a></button>\n`;
+        } else {
+            html += `<a class="btn" data-bs-toggle="collapse" href="#q${topic + 1}">Далее</a></button>\n`;
+        }
+        html += `</div>\n`;
+
     });
 
-    // Добавление кнопок
-    html += `<button type="submit" class="btn btn-primary mt-3" disabled>\n`;
-    html += `<a class="btn" href="#">Назад</a></button>\n`;
-    html += `<button type="submit" class="btn btn-primary mt-3">\n`;
-    html += `<a class="btn" data-bs-toggle="collapse" href="#q${questions.length}">Далее</a></button>\n`;
     html += `</form>\n`;
 
     return html;
