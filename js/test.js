@@ -84,9 +84,9 @@ function generateHTML(questions) {
         sectionStructure.topics.forEach((topicStructure, topicIndex) => {
             const topic = topicIndex + 1
             html += `<div id="q${section}${topic}" class="collapse show" data-bs-parent="#questions">\n`;
-            html += `<h2>Раздел ${section}: ${sectionStructure.title}</h2>\n`;
+            html += `<h2>${sectionStructure.title}</h2>\n`;
             if (topicStructure.subTitle) {
-                html += `<h3>${section}.${topic} ${topicStructure.subTitle}</h3>\n`;
+                html += `<h3>${topicStructure.subTitle}</h3>\n`;
             }
 
             // Добавление дефолтного ответа
