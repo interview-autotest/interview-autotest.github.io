@@ -1,4 +1,4 @@
-| N | Раздел | Тема | Treinee | Junior | Middle | Senior | Master |
+| N | Раздел | Тема | Trainee | Junior | Middle | Senior | Master |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1.1 | Computer Science | Алгоритмы и структуры данных | 0 | 1 | 2 | 2-3 | 2-3 |
 | 1.2 | Computer Science | ООП | 0 | 1 | 2 | 2 | 2 |
